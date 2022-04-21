@@ -1,0 +1,16 @@
+.content-result{
+    top: -50px;
+    margin: auto auto;
+    width: 800px;
+    position: relative;
+    text-align: center;
+}
+
+.result-resp{
+    font-size: x-large;
+    font-weight: bold;
+    position: absolute;
+    top: 50px;
+    left: 26%;
+    right: 25%;
+}

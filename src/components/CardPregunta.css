@@ -1,0 +1,72 @@
+.card-content{
+    margin: 1rem;   
+}
+
+.card-titlee{
+    height: auto;
+    background-color: rgb(114, 166, 230);
+    margin: 15px;
+    border-radius: 10px;
+
+    /* padding: 15px; */
+}
+
+h3{
+    padding-top: 5px;
+}
+
+
+.card-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+img{
+    width: 40px;
+    height: 4s0px;
+}
+
+
+.saveandexit:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px 0px ;
+}
+
+.card-cuestions{
+    display: grid;
+    grid-template-columns: 82% 18%;
+    height: auto;
+    padding: 15px;
+}
+
+.buttonsDocente{
+    background-color: aliceblue;
+    /* margin-right: 5px; */
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cuestions p{
+    display: flex;
+    align-items: center;
+    word-break:break-all;
+}
+
+.btnedit{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.btnedit:hover{
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
