@@ -125,7 +125,6 @@ function Preguntas(props) {
                 <div>
                     {
                         preguntas.map((element, index) => {
-                            console.log(element.codigo)
                             return (
                                 <div key={element.codigo}>
                                     <label className='font-serif ml-2 text-xl'>{element.pregunta}</label>
