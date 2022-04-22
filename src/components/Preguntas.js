@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { idExamen, titleExa } from "./CardExamenes";
 import { useNavigate } from "react-router-dom";
 import { db, collections, getDoc } from "../firebase";
-import { async } from '@firebase/util';
 
 
 export var cantidadCorrectas = ''
-var nombreExamen = '';
-var intento = 0;
 
 function Preguntas(props) {
 
@@ -69,25 +66,13 @@ function Preguntas(props) {
         navigate('/responderexamen');
     }
 
-<<<<<<< HEAD
-    const guardar = async() =>{
-        var correctas = 0;
-        var calificacion = 0
-        for(var i = 0; i<preguntas.length; i++){
-            if(i === 0){
-               if(preguntas[i].correcta === respuestas.pregunta1){
-                   correctas++;
-                   calificacion = calificacion + 20;
-               }
-            }else if(i===1){
-                if(preguntas[i].correcta === respuestas.pregunta2){
-=======
+
     const guardar = () => {
         var correctas = 0;
+        var calificacion = 0
         for (var i = 0; i < preguntas.length; i++) {
             if (i === 0) {
                 if (preguntas[i].correcta === respuestas.pregunta1) {
->>>>>>> 48cd631ab2538ac05b14dc44873e5af0e2841a2a
                     correctas++;
                     calificacion = calificacion + 20;
                 }
@@ -114,31 +99,8 @@ function Preguntas(props) {
 
         }
 
-<<<<<<< HEAD
-        // const datosCompletos = []
-        // var flag = false
-        // const querySnapshot = await getDoc(collections(db,'Calificaciones'))
-        // querySnapshot.forEach((doc) => {
-        //     if(doc.id === props.userName){
-        //         datosCompletos.push({...doc.data(),id:doc.id})
-        //         flag = true
-        //     } 
-        // })
-
-
-        // if(flag === false){
-
-        // }
-
         cantidadCorrectas = correctas
         navigate('/examenresultado')
-=======
-        cantidadCorrectas = correctas;
-        nombreExamen = titleExa;
-        obtenerIntento();
-        guardarIntento();
-        navigate('/examenresultado');
->>>>>>> 48cd631ab2538ac05b14dc44873e5af0e2841a2a
     }
 
     const handleOnChange = e => {
@@ -146,41 +108,6 @@ function Preguntas(props) {
         setRespuestas({ ...respuestas, [name]: value })
     }
 
-    const obtenerIntento = async () => {
-        const datos = [];
-        const longitud = 0;
-        try {
-            const querySnapshot = await getDoc(collections(db, 'Calificaciones'))
-            querySnapshot.forEach((doc) => {
-                if (doc.id === nombreExamen) {
-                    console.log('Examen Registrado');
-                    console.log(doc.data());
-                    //7 incremento mi contador
-                    datos.push(doc.data());
-                    intento++;
-                    console.log('Los datos son: ' + datos);
-                }
-            })
-
-            console.log(Object.values(datos));
-
-            //longitud = datos.length();
-            for (let index = 0; index < longitud; index++) {
-
-            }
-        } catch (error) {
-            console.log('error ' + error);
-        }
-
-
-
-    }
-
-
-    const guardarIntento = () => {
-        console.log('el nombre del examen es: ' + nombreExamen + ' y el intento es: ' + intento);
-        //Utilizaremos nombreExamen e intento con paso en 1
-    }
 
     return (
         <div className='bg-slate-300 w-full'>
@@ -188,7 +115,6 @@ function Preguntas(props) {
                 <div className='border border-2px h-9 bg-white flow-root'>
                     <label className='font-serif ml-2 text-lg mr-80'>Alumno: {props.userName}</label>
                     <label className='font-bold ml-10 text-xl'>{titleExa}</label>
-                    <label className='font-bold ml-10 text-xl'>Intento: {intento + 1}</label>
                     <button onClick={salir} className='float-right'>
                         <svg className="h-8 w-8 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /> <line x1="9" y1="9" x2="15" y2="15" />  <line x1="15" y1="9" x2="9" y2="15" /></svg>
                     </button>

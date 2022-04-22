@@ -6,12 +6,12 @@ import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from 'firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQaja_RwMdRapQhszZV-eRjj27--w4mks",
-  authDomain: "simulador4-784df.firebaseapp.com",
-  projectId: "simulador4-784df",
-  storageBucket: "simulador4-784df.appspot.com",
-  messagingSenderId: "852767608504",
-  appId: "1:852767608504:web:b9f1540a0d12e28671ee4d"
+  apiKey: "AIzaSyCyvw4KZnYoHlMNp16FQ86lm_yehPZeb3E",
+  authDomain: "simulador5-2272d.firebaseapp.com",
+  projectId: "simulador5-2272d",
+  storageBucket: "simulador5-2272d.appspot.com",
+  messagingSenderId: "274318386902",
+  appId: "1:274318386902:web:fe905534a1424dcaadcb77"
 };
 
 

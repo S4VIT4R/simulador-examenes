@@ -84,12 +84,8 @@ function CardPregunta({idd, idExamen, titlePreg }) {
           icon: 'error',
           text: 'No puedes eliminar una pregunta cuando un examen tiene una cantidad de preguntas igual o inferior a 5',
         })
-        // alert('No puedes eliminar una pregunta cuando un examen tiene una cantidad de preguntas igual o inferior a 5')
+        
       }
-      // navigate('/examenes');
-
-      // firebase.firestore().collection("libros").add({title: "De ratones y hombres",})
-      // testUpdate = []
     } catch (error) {
       console.log(error);
     }
