@@ -109,13 +109,27 @@ function Preguntas(props) {
     }
 
     const obtenerIntento = async () => {
+        const datos = [];
+        const longitud = 0;
         try {
             const querySnapshot = await getDoc(collections(db, 'Calificaciones'))
             querySnapshot.forEach((doc) => {
                 if (doc.id === nombreExamen) {
                     console.log('Examen Registrado');
+                    console.log(doc.data());
+                    //7 incremento mi contador
+                    datos.push(doc.data());
+                    intento++;
+                    console.log('Los datos son: ' + datos);
                 }
             })
+
+            console.log(Object.values(datos));
+
+            //longitud = datos.length();
+            for (let index = 0; index < longitud; index++) {
+
+            }
         } catch (error) {
             console.log('error ' + error);
         }
