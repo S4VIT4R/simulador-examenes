@@ -35,6 +35,15 @@ function Register(props) {
         navigate('/');
     }
 
+    const mostrar = () => {
+      var x = document.getElementById('password')
+      if(x.type==='password'){
+        x.type = 'text'
+      }else{
+        x.type = 'password'
+      }
+    }
+
   return (
     <div className='w-full max-w-xs m-auto'>
     {props.notificacion && <Alert message={props.notificacion}></Alert>}
@@ -98,9 +107,14 @@ function Register(props) {
           </div>
         </div>
 
-              <button onClick={handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full m-auto'>Registrar</button>
+        <div className="topping ml-1 mb-3 mt-0">
+          <input type="checkbox" id="topping" name="topping" value="Paneer" onClick={mostrar} /> Ver contraseña
+        </div>
+
+        <button onClick={handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full m-auto'>Registrar</button>
 
     </form>
+
         <p className='my-2 text-sm flex justify-center px-3 '>¿Ya tienes una cuenta?</p>
         <button onClick={handleNavigate} className='bg-slate-50 hover:bg-slate-200 text-black shadow-md rounded border-2 border-gray-300 py-2 px-4 w-full m-auto'>Iniciar Sesión</button>
   </div>

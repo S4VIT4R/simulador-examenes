@@ -3,6 +3,7 @@ import './CardDocente.css'
 import { Link } from "react-router-dom";
 import {db} from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 export var idExamen = '';
 export var titleExa = '';
@@ -21,6 +22,10 @@ function CardExamenDocente({id,title,imageUrl}){
             if(window.confirm('¿Está seguro que desea eliminar el examen?')){
                 const examen = doc(db, 'Examenes',idExamen);
                 await deleteDoc(examen);
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Examen eliminado',
+                  })
             }
         } catch (error) {
             console.log(error)

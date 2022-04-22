@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './GenerarExamen.css';
 import {useNavigate} from "react-router-dom";
 import {db, collections, addDocs} from "../firebase";
+import Swal from 'sweetalert2';
 
 function limpiar(){
  document.getElementById("pregunta").value="";
@@ -11,6 +12,7 @@ function limpiar(){
  document.getElementById("correcta").value="";
 }
 var contador = 0;
+var contadorPregunta = 0;
 var examen = [
         
 ]
@@ -35,6 +37,7 @@ function GenerarExamen(props) {
     const handleSubmit = async() => {
       examen = []
       contador = 0;
+      contadorPregunta = 0;
       navigate('/examenes');      
     }
 
@@ -62,10 +65,13 @@ function GenerarExamen(props) {
             examen.push({usuario,title})
             examen.push(values);
             contador++;
+            contadorPregunta++;
+            console.log(contadorPregunta)
         }else{
-            
             examen.push(values)
             contador++;
+            contadorPregunta++;
+            console.log(contadorPregunta)
         }
         limpiar();
         
@@ -79,19 +85,33 @@ function GenerarExamen(props) {
     }
 
     const handleSubmitGuardar = async() =>{
-        try {
+        console.log(contadorPregunta)
+        if(contadorPregunta>=5){
+          try {
+            Swal.fire({
+              icon: 'success',
+              text: 'Examen Guardado',
+            })
             await addDocs(collections(db, "Examenes"), {
                 examen
                });
-        } catch (error) {
+            navigate('/examenes')
+          } catch (error) {
             console.log(error.message);
+          }
+        }else{
+          Swal.fire({
+            icon: 'error',
+            text: 'La cantidad de preguntas mínimo deben ser 5, usted ha registrado ' + contadorPregunta,
+          })
         }
     }
+
 
   return (
     <section className='form-register'>
 
-      <h1 className='mt-0 mb-1'>Ingrese el titulo del examen</h1>
+      <p className='mb-4 font-serif text-2xl'>Ingrese el titulo del examen</p>
       <input onChange={handleChangeTitleAndUser} className='controls' type='text' name='title' id='title' placeholder='Ingrese el titulo del examen'/>
       <p className='mb-3'>Escriba la pregunta</p>
       <input onChange={handleChange} className='controls' type='text' name='pregunta' id='pregunta' placeholder='Ingrese la pregunta'/>

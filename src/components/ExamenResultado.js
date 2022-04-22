@@ -21,7 +21,21 @@ function ExamenResultado(props) {
                 </button>
             </div>            
             <div className='text-center flow-root'>
-                 <label className='result-resp'>!Obtuviste {cantidadCorrectas} respuestas correctas de 5 preguntas!</label>                
+                 {
+                    cantidadCorrectas===1 && <label className='result-resp'>Tu calificación es 20/100 Respuestas correctas: {cantidadCorrectas}</label>
+                 }
+                 {
+                    cantidadCorrectas===2 && <label className='result-resp'>Tu calificación es 40/100 Respuestas correctas: {cantidadCorrectas}</label>
+                 }
+                 {
+                    cantidadCorrectas===3 && <label className='result-resp'>Tu calificación es 60/100 Respuestas correctas: {cantidadCorrectas}</label>
+                 }
+                 {
+                    cantidadCorrectas===4 && <label className='result-resp'>Tu calificación es 80/100 Respuestas correctas: {cantidadCorrectas}</label>
+                 }
+                 {
+                    cantidadCorrectas===5 && <label className='result-resp'>Tu calificación es 100/100 Respuestas correctas: {cantidadCorrectas}</label>
+                 }             
             </div>            
             <div className='w-full  content-center h-full'>
                 {

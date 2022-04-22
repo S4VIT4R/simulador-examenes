@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {idExamenn,idPregunta} from "./CardPregunta";
 import { db, collections, getDoc, setDocs, docs,} from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 function EditarPregunta() {
     
@@ -112,7 +113,10 @@ function EditarPregunta() {
                 await setDocs(ref, {
                 examen,
                 });
-
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Pregunta modificada',
+                  })
                 navigate('/editarexamen')
 
         } catch (error) {
@@ -125,7 +129,8 @@ function EditarPregunta() {
     }
 
   return (
-    <section className='form-register'>
+    <div className='w-full bg-slate-300 overflow auto'>
+        <section className='form-register'>
         {
             pregunta.map((element, index)=>{
                 return(
@@ -152,7 +157,8 @@ function EditarPregunta() {
                 )
             })
         }
-  </section>
+       </section>
+    </div>
   )
 }
 

@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {idExamen} from "./CardExamenDocente";
 import { db, collections, getDoc, setDocs, docs,} from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 function AgregarPregunta() {
     const navigate = useNavigate()
@@ -48,10 +49,9 @@ function AgregarPregunta() {
                     }
                 })
 
-                if (window.confirm("¿Está seguro que desea agregar la pregunta?")) {
-                    const examen = doc(db, "Examenes", idExamen);
-                    await deleteDoc(examen);
-                }
+                const examenE = doc(db, "Examenes", idExamen);
+                await deleteDoc(examenE);
+                
 
                 var examen = [];
                 var longitud = datosCompletos[0].examen.length;
@@ -84,7 +84,10 @@ function AgregarPregunta() {
                 await setDocs(ref, {
                 examen,
                 });
-
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Pregunta agregada',
+                  })
                 navigate('/editarexamen')
         } catch (error) {
             console.log(error);

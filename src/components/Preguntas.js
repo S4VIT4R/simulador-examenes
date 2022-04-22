@@ -65,33 +65,54 @@ function Preguntas(props) {
         navigate('/responderexamen');
     }
 
-    const guardar = () =>{
+    const guardar = async() =>{
         var correctas = 0;
+        var calificacion = 0
         for(var i = 0; i<preguntas.length; i++){
             if(i === 0){
                if(preguntas[i].correcta === respuestas.pregunta1){
                    correctas++;
+                   calificacion = calificacion + 20;
                }
             }else if(i===1){
                 if(preguntas[i].correcta === respuestas.pregunta2){
                     correctas++;
+                    calificacion = calificacion + 20;
                 }
             }else if(i===2){
                 if(preguntas[i].correcta === respuestas.pregunta3){
                     correctas++;
+                    calificacion = calificacion + 20;
                 }
             }else if(i===3){
                 if(preguntas[i].correcta === respuestas.pregunta4){
                     correctas++;
+                    calificacion = calificacion + 20;
                 }
             }else if(i===4){
                 if(preguntas[i].correcta === respuestas.pregunta5){
                     correctas++;
+                    calificacion = calificacion + 20;
                 }
             }
            
         }
-        
+
+        // const datosCompletos = []
+        // var flag = false
+        // const querySnapshot = await getDoc(collections(db,'Calificaciones'))
+        // querySnapshot.forEach((doc) => {
+        //     if(doc.id === props.userName){
+        //         datosCompletos.push({...doc.data(),id:doc.id})
+        //         flag = true
+        //     } 
+        // })
+
+
+        // if(flag === false){
+
+        // }
+
         cantidadCorrectas = correctas
         navigate('/examenresultado')
     }
